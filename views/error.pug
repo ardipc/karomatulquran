@@ -1,6 +1,23 @@
 extends layout
 
 block content
-  h1= message
-  h2= error.status
-  pre #{error.stack}
+  section.breadcrumb.breadcrumb_bg
+    .container
+      .row
+        .col-lg-12
+          .breadcrumb_iner.text-center
+            .breadcrumb_iner_item
+              h2= message
+              p
+                | Home
+                span /
+                | #{message}
+
+  section.special_cource.padding_top(style="padding-top: 70px;")
+      .container
+        .row.justify-content-center
+          .col-xl-5
+            .section_tittle.text-center
+              p= message
+              h2= error.status
+              pre #{error.stack}

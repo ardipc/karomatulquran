@@ -7,51 +7,28 @@ html(lang='en')
     meta(name='keywords', content='')
     meta(name='description', content='')
     title Karomatul Qur'an
-    link(rel='icon', href='img/logo_kq.png')
-    link(rel='stylesheet', href='css/bootstrap.min.css')
-    link(rel='stylesheet', href='css/animate.css')
-    link(rel='stylesheet', href='css/owl.carousel.min.css')
-    link(rel='stylesheet', href='css/themify-icons.css')
-    link(rel='stylesheet', href='css/flaticon.css')
-    link(rel='stylesheet', href='css/magnific-popup.css')
-    link(rel='stylesheet', href='css/slick.css')
-    link(rel='stylesheet', href='css/style.css')
+    link(rel='icon', href=env.app_url+'/img/logo_kq.png')
+    link(rel='stylesheet', href=env.app_url+'/css/bootstrap.min.css')
+    link(rel='stylesheet', href=env.app_url+'/css/animate.css')
+    link(rel='stylesheet', href=env.app_url+'/css/owl.carousel.min.css')
+    link(rel='stylesheet', href=env.app_url+'/css/themify-icons.css')
+    link(rel='stylesheet', href=env.app_url+'/css/flaticon.css')
+    link(rel='stylesheet', href=env.app_url+'/css/magnific-popup.css')
+    link(rel='stylesheet', href=env.app_url+'/css/slick.css')
+    link(rel='stylesheet', href=env.app_url+'/css/style.css')
   body
     header.main_menu.home_menu
       .container
         .row.align-items-center
           .col-lg-12
             nav.navbar.navbar-expand-lg.navbar-light
-              a.navbar-brand(href='/')
-                img(src='img/logo2.png', alt='logo')
+              a.navbar-brand(href=env.app_url)
+                img(src=env.app_url+'/img/logo2.png', alt='logo')
               button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarSupportedContent', aria-controls='navbarSupportedContent', aria-expanded='false', aria-label='Toggle navigation')
                 span.navbar-toggler-icon
-              #navbarSupportedContent.collapse.navbar-collapse.main-menu-item.justify-content-end
-                ul.navbar-nav.align-items-center
-                  li.nav-item.active
-                    a.nav-link(href='/') Beranda
-                  li.nav-item
-                    a.nav-link(href='#') Berita
-                  li.nav-item
-                    a.nav-link(href='#') Galeri
-                  li.nav-item.dropdown
-                    a#navbarDropdown.nav-link.dropdown-toggle(href='#', role='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
-                      | Tentang
-                    .dropdown-menu(aria-labelledby='navbarDropdown')
-                      a.dropdown-item(href='#') Sejarah
-                      a.dropdown-item(href='#') Struktur
-                      a.dropdown-item(href='#') Santri
-                      a.dropdown-item(href='#') Penghargaan
-                  li.nav-item.dropdown
-                    a#navbarDropdown.nav-link.dropdown-toggle(href='#', role='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
-                      | Kegiatan
-                    .dropdown-menu(aria-labelledby='navbarDropdown')
-                      a.dropdown-item(href='#') Agenda
-                      a.dropdown-item(href='#') Fasilitas
-                  li.nav-item
-                    a.nav-link(href='#') Kontak
-                  li.d-none.d-lg-block
-                    a.btn_1(href='#') Gabung Yuk
+
+              include navigasi
+              
     section.banner_part
       .container
         .row.align-items-center
@@ -64,6 +41,7 @@ html(lang='en')
                   | Ponpes Karomatul Qur'an adalah pondok pesantren atau lembaga pendidikan yang berbasis tahfizil Al-quran dan bermanhajkan Ahlu Sunnah Wal Jama'ah.
                 a.btn_1(href='#') View Course 
                 a.btn_2(href='#') Get Started 
+                
     section.feature_part
       .container
         .row
@@ -105,7 +83,7 @@ html(lang='en')
         .row.align-items-sm-center.align-items-lg-stretch
           .col-md-7.col-lg-7
             .learning_img
-              img(src='img/learning_img2.png', alt='')
+              img(src=env.app_url+'/img/learning_img2.png', alt='')
           .col-md-5.col-lg-5
             .learning_member_text
               h5 Inilah Kami
@@ -119,6 +97,7 @@ html(lang='en')
                 li Sabar
                 li Syukur
               a.btn_1(href='#') Read More
+              
     section.member_counter
       .container
         .row
@@ -148,7 +127,7 @@ html(lang='en')
         .row
           .col-sm-6.col-lg-4
             .single_special_cource
-              img.special_img(src='img/pendidikan/hafidz2.png', alt='')
+              img.special_img(src=env.app_url+'/img/pendidikan/hafidz2.png', alt='')
               .special_cource_text
                 a.btn_4(href='course-details.html') Pendidikan
                 h4 18 Sep 2019
@@ -158,7 +137,7 @@ html(lang='en')
                   | Tahfizul Qur’an menjadi program unggulan pesantren. Oleh karena itu perkembangan hafalan santri selalu dipantau untuk selalu meningkat setiap semester.
                 .author_info
                   .author_img
-                    img(src='img/pendidikan/author.png', alt='')
+                    img(src=env.app_url+'/img/pendidikan/author.png', alt='')
                     .author_info_text
                       p Dibuat oleh:
                       h5
@@ -166,19 +145,19 @@ html(lang='en')
                   .author_rating
                     .rating
                       a(href='#')
-                        img(src='img/icon/color_star.svg', alt='')
+                        img(src=env.app_url+'/img/icon/color_star.svg', alt='')
                       a(href='#')
-                        img(src='img/icon/color_star.svg', alt='')
+                        img(src=env.app_url+'/img/icon/color_star.svg', alt='')
                       a(href='#')
-                        img(src='img/icon/color_star.svg', alt='')
+                        img(src=env.app_url+'/img/icon/color_star.svg', alt='')
                       a(href='#')
-                        img(src='img/icon/color_star.svg', alt='')
+                        img(src=env.app_url+'/img/icon/color_star.svg', alt='')
                       a(href='#')
-                        img(src='img/icon/color_star.svg', alt='')
+                        img(src=env.app_url+'/img/icon/color_star.svg', alt='')
                     p 4.8 Ratings
           .col-sm-6.col-lg-4
             .single_special_cource
-              img.special_img(src='img/pendidikan/hafidz2.png', alt='')
+              img.special_img(src=env.app_url+'/img/pendidikan/hafidz2.png', alt='')
               .special_cource_text
                 a.btn_4(href='course-details.html') Pendidikan
                 h4 18 Sep 2019
@@ -188,7 +167,7 @@ html(lang='en')
                   | Kitab kuning, dalam pendidikan agama islam, merujuk kepada kitab-kitab tradisional yang berisi pelajaran-pelajaran agama islam yang diajarkan pada Pondok-pondok Pesantren.
                 .author_info
                   .author_img
-                    img(src='img/pendidikan/author.png', alt='')
+                    img(src=env.app_url+'/img/pendidikan/author.png', alt='')
                     .author_info_text
                       p Dibuat oleh:
                       h5
@@ -196,19 +175,19 @@ html(lang='en')
                   .author_rating
                     .rating
                       a(href='#')
-                        img(src='img/icon/color_star.svg', alt='')
+                        img(src=env.app_url+'/img/icon/color_star.svg', alt='')
                       a(href='#')
-                        img(src='img/icon/color_star.svg', alt='')
+                        img(src=env.app_url+'/img/icon/color_star.svg', alt='')
                       a(href='#')
-                        img(src='img/icon/color_star.svg', alt='')
+                        img(src=env.app_url+'/img/icon/color_star.svg', alt='')
                       a(href='#')
-                        img(src='img/icon/color_star.svg', alt='')
+                        img(src=env.app_url+'/img/icon/color_star.svg', alt='')
                       a(href='#')
-                        img(src='img/icon/color_star.svg', alt='')
+                        img(src=env.app_url+'/img/icon/color_star.svg', alt='')
                     p 4.8 Ratings
           .col-sm-6.col-lg-4
             .single_special_cource
-              img.special_img(src='img/pendidikan/hafidz2.png', alt='')
+              img.special_img(src=env.app_url+'/img/pendidikan/hafidz2.png', alt='')
               .special_cource_text
                 a.btn_4(href='course-details.html') Pendidikan
                 h4 18 Sep 2019
@@ -218,7 +197,7 @@ html(lang='en')
                   | Tahfizul Qur’an menjadi program unggulan pesantren. Oleh karena itu perkembangan hafalan santri selalu dipantau untuk selalu meningkat setiap semester.
                 .author_info
                   .author_img
-                    img(src='img/pendidikan/author.png', alt='')
+                    img(src=env.app_url+'/img/pendidikan/author.png', alt='')
                     .author_info_text
                       p Dibuat oleh:
                       h5
@@ -226,20 +205,20 @@ html(lang='en')
                   .author_rating
                     .rating
                       a(href='#')
-                        img(src='img/icon/color_star.svg', alt='')
+                        img(src=env.app_url+'/img/icon/color_star.svg', alt='')
                       a(href='#')
-                        img(src='img/icon/color_star.svg', alt='')
+                        img(src=env.app_url+'/img/icon/color_star.svg', alt='')
                       a(href='#')
-                        img(src='img/icon/color_star.svg', alt='')
+                        img(src=env.app_url+'/img/icon/color_star.svg', alt='')
                       a(href='#')
-                        img(src='img/icon/color_star.svg', alt='')
+                        img(src=env.app_url+'/img/icon/color_star.svg', alt='')
                       a(href='#')
-                        img(src='img/icon/color_star.svg', alt='')
+                        img(src=env.app_url+'/img/icon/color_star.svg', alt='')
                     p 4.8 Ratings
         .row(style='margin-top: 30px;')
           .col-sm-6.col-lg-4
             .single_special_cource
-              img.special_img(src='img/pendidikan/hafidz2.png', alt='')
+              img.special_img(src=env.app_url+'/img/pendidikan/hafidz2.png', alt='')
               .special_cource_text
                 a.btn_4(href='course-details.html') Pendidikan
                 h4 18 Sep 2019
@@ -249,7 +228,7 @@ html(lang='en')
                   | Tahfizul Qur’an menjadi program unggulan pesantren. Oleh karena itu perkembangan hafalan santri selalu dipantau untuk selalu meningkat setiap semester.
                 .author_info
                   .author_img
-                    img(src='img/pendidikan/author.png', alt='')
+                    img(src=env.app_url+'/img/pendidikan/author.png', alt='')
                     .author_info_text
                       p Dibuat oleh:
                       h5
@@ -257,19 +236,19 @@ html(lang='en')
                   .author_rating
                     .rating
                       a(href='#')
-                        img(src='img/icon/color_star.svg', alt='')
+                        img(src=env.app_url+'/img/icon/color_star.svg', alt='')
                       a(href='#')
-                        img(src='img/icon/color_star.svg', alt='')
+                        img(src=env.app_url+'/img/icon/color_star.svg', alt='')
                       a(href='#')
-                        img(src='img/icon/color_star.svg', alt='')
+                        img(src=env.app_url+'/img/icon/color_star.svg', alt='')
                       a(href='#')
-                        img(src='img/icon/color_star.svg', alt='')
+                        img(src=env.app_url+'/img/icon/color_star.svg', alt='')
                       a(href='#')
-                        img(src='img/icon/color_star.svg', alt='')
+                        img(src=env.app_url+'/img/icon/color_star.svg', alt='')
                     p 4.8 Ratings
           .col-sm-6.col-lg-4
             .single_special_cource
-              img.special_img(src='img/pendidikan/hafidz2.png', alt='')
+              img.special_img(src=env.app_url+'/img/pendidikan/hafidz2.png', alt='')
               .special_cource_text
                 a.btn_4(href='course-details.html') Pendidikan
                 h4 18 Sep 2019
@@ -279,7 +258,7 @@ html(lang='en')
                   | Tahfizul Qur’an menjadi program unggulan pesantren. Oleh karena itu perkembangan hafalan santri selalu dipantau untuk selalu meningkat setiap semester.
                 .author_info
                   .author_img
-                    img(src='img/pendidikan/author.png', alt='')
+                    img(src=env.app_url+'/img/pendidikan/author.png', alt='')
                     .author_info_text
                       p Dibuat oleh:
                       h5
@@ -287,19 +266,19 @@ html(lang='en')
                   .author_rating
                     .rating
                       a(href='#')
-                        img(src='img/icon/color_star.svg', alt='')
+                        img(src=env.app_url+'/img/icon/color_star.svg', alt='')
                       a(href='#')
-                        img(src='img/icon/color_star.svg', alt='')
+                        img(src=env.app_url+'/img/icon/color_star.svg', alt='')
                       a(href='#')
-                        img(src='img/icon/color_star.svg', alt='')
+                        img(src=env.app_url+'/img/icon/color_star.svg', alt='')
                       a(href='#')
-                        img(src='img/icon/color_star.svg', alt='')
+                        img(src=env.app_url+'/img/icon/color_star.svg', alt='')
                       a(href='#')
-                        img(src='img/icon/color_star.svg', alt='')
+                        img(src=env.app_url+'/img/icon/color_star.svg', alt='')
                     p 4.8 Ratings
           .col-sm-6.col-lg-4
             .single_special_cource
-              img.special_img(src='img/pendidikan/hafidz2.png', alt='')
+              img.special_img(src=env.app_url+'/img/pendidikan/hafidz2.png', alt='')
               .special_cource_text
                 a.btn_4(href='course-details.html') Pendidikan
                 h4 18 Sep 2019
@@ -309,7 +288,7 @@ html(lang='en')
                   | Tahfizul Qur’an menjadi program unggulan pesantren. Oleh karena itu perkembangan hafalan santri selalu dipantau untuk selalu meningkat setiap semester.
                 .author_info
                   .author_img
-                    img(src='img/pendidikan/author.png', alt='')
+                    img(src=env.app_url+'/img/pendidikan/author.png', alt='')
                     .author_info_text
                       p Dibuat oleh:
                       h5
@@ -317,15 +296,15 @@ html(lang='en')
                   .author_rating
                     .rating
                       a(href='#')
-                        img(src='img/icon/color_star.svg', alt='')
+                        img(src=env.app_url+'/img/icon/color_star.svg', alt='')
                       a(href='#')
-                        img(src='img/icon/color_star.svg', alt='')
+                        img(src=env.app_url+'/img/icon/color_star.svg', alt='')
                       a(href='#')
-                        img(src='img/icon/color_star.svg', alt='')
+                        img(src=env.app_url+'/img/icon/color_star.svg', alt='')
                       a(href='#')
-                        img(src='img/icon/color_star.svg', alt='')
+                        img(src=env.app_url+'/img/icon/color_star.svg', alt='')
                       a(href='#')
-                        img(src='img/icon/color_star.svg', alt='')
+                        img(src=env.app_url+'/img/icon/color_star.svg', alt='')
                     p 4.8 Ratings
     section.advance_feature.learning_part
       .container
@@ -351,7 +330,7 @@ html(lang='en')
                       | Sesungguhnya Ia adalah Dzat yang hidup, mengetahui, berkuasa, berkehendak, mendengar, melihat, dan berbicara.
           .col-lg-6.col-md-6
             .learning_img
-              img(src='img/pendidikan/aqidah.png', alt='')
+              img(src=env.app_url+'/img/pendidikan/aqidah.png', alt='')
     section.blog_part.section_padding
       .container
         .row.justify-content-center
@@ -363,7 +342,7 @@ html(lang='en')
           .col-sm-6.col-lg-4.col-xl-4
             .single-home-blog
               .card
-                img.card-img-top(src='img/blog/maulid.png', alt='blog')
+                img.card-img-top(src=env.app_url+'/img/blog/maulid.png', alt='blog')
                 .card-body
                   a.btn_4(href='#') Maulid Nabi
                   a(href='#')
@@ -380,7 +359,7 @@ html(lang='en')
           .col-sm-6.col-lg-4.col-xl-4
             .single-home-blog
               .card
-                img.card-img-top(src='img/blog/wisuda.png', alt='blog')
+                img.card-img-top(src=env.app_url+'/img/blog/wisuda.png', alt='blog')
                 .card-body
                   a.btn_4(href='#') Wisuda
                   a(href='#')
@@ -397,7 +376,7 @@ html(lang='en')
           .col-sm-6.col-lg-4.col-xl-4
             .single-home-blog
               .card
-                img.card-img-top(src='img/blog/iduladha.png', alt='blog')
+                img.card-img-top(src=env.app_url+'/img/blog/iduladha.png', alt='blog')
                 .card-body
                   a.btn_4(href='#') Hari Raya Idul Adha
                   a(href='#')
@@ -417,7 +396,7 @@ html(lang='en')
           .col-sm-6.col-md-4.col-xl-3
             .single-footer-widget.footer_1
               a(href='index.html')
-                img(src='img/logo2.png', alt='')
+                img(src=env.app_url+'/img/logo2.png', alt='')
               p
                 | Apabila ada kritik dan saran yang dapat menjadikan kami lebih baik kirimi kami surat lewait email anda. Terimakasih.
           .col-sm-6.col-md-4.col-xl-4
@@ -463,15 +442,16 @@ html(lang='en')
                   p.footer-text.m-0
                     | Copyright © 2019. All rights reserved. 
                     b Pondok Pesantren Karomatul Qur'an.
-    script(src='js/jquery-1.12.1.min.js')
-    script(src='js/popper.min.js')
-    script(src='js/bootstrap.min.js')
-    script(src='js/jquery.magnific-popup.js')
-    script(src='js/swiper.min.js')
-    script(src='js/masonry.pkgd.js')
-    script(src='js/owl.carousel.min.js')
-    script(src='js/jquery.nice-select.min.js')
-    script(src='js/slick.min.js')
-    script(src='js/jquery.counterup.min.js')
-    script(src='js/waypoints.min.js')
-    script(src='js/custom.js')
+                    
+    script(src=env.app_url+'/js/jquery-1.12.1.min.js')
+    script(src=env.app_url+'/js/popper.min.js')
+    script(src=env.app_url+'/js/bootstrap.min.js')
+    script(src=env.app_url+'/js/jquery.magnific-popup.js')
+    script(src=env.app_url+'/js/swiper.min.js')
+    script(src=env.app_url+'/js/masonry.pkgd.js')
+    script(src=env.app_url+'/js/owl.carousel.min.js')
+    script(src=env.app_url+'/js/jquery.nice-select.min.js')
+    script(src=env.app_url+'/js/slick.min.js')
+    script(src=env.app_url+'/js/jquery.counterup.min.js')
+    script(src=env.app_url+'/js/waypoints.min.js')
+    script(src=env.app_url+'/js/custom.js')

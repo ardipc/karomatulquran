@@ -1,0 +1,26 @@
+#navbarSupportedContent.collapse.navbar-collapse.main-menu-item.justify-content-end
+  ul.navbar-nav.align-items-center
+    li.nav-item
+      a.nav-link(href=env.app_url) Beranda
+    li.nav-item
+      a.nav-link(href=env.app_url+'/berita') Berita
+    li.nav-item
+      a.nav-link(href=env.app_url+'/galeri') Galeri
+    li.nav-item.dropdown
+      a#navbarDropdown.nav-link.dropdown-toggle(href='#', role='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
+        | Tentang
+      .dropdown-menu(aria-labelledby='navbarDropdown')
+        a.dropdown-item(href=env.app_url+'/profil') Profil
+        a.dropdown-item(href=env.app_url+'/struktur') Struktur
+        a.dropdown-item(href=env.app_url+'/santri') Santri
+        a.dropdown-item(href=env.app_url+'/prestasi') Prestasi
+    li.nav-item.dropdown
+      a#navbarDropdown.nav-link.dropdown-toggle(href='#', role='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
+        | Kegiatan
+      .dropdown-menu(aria-labelledby='navbarDropdown')
+        a.dropdown-item(href=env.app_url+'/agenda') Agenda
+        a.dropdown-item(href=env.app_url+'/fasilitas') Fasilitas
+    li.nav-item
+      a.nav-link(href=env.app_url+'/kontak') Kontak
+    li.d-none.d-lg-block
+      a.btn_1(href='#') Gabung Yuk

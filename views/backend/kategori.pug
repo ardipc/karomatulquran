@@ -1,0 +1,39 @@
+extends layout
+
+block contentBackend
+  .row
+    h2= title
+    hr
+
+    .col-lg-4
+      form.form-vertical(method='post', action=env.app_url_back+'/kategori/proses')
+        .form-group
+          label Kategori Baru
+          input(type='hidden', name='id', value=formData.id)
+          input.form-control(type='text', name='namaKategori', placeholder='Kategori Baru', required, value=formData.namaKategori)
+        .form-group
+          label Deskripsi Kategori
+          textarea.form-control(placeholder='Deskripsi Kategori', name='deskripsiKategori', rows='6')= formData.deskripsiKategori
+        .form-group
+          input.btn.btn-success(type='submit', name='submit', value='Simpan')
+          | &nbsp;
+          a.btn.btn-primary(href=env.app_url_back+'/kategori') Reload
+    
+    .col-lg-8
+      table.table.table-striped
+        thead
+          tr
+            th NO
+            th KATEGORI
+            th DESKRIPSI
+            th ACTION
+        tbody
+          each dd, i in rows
+            tr
+              td= (i+1)
+              td= dd.namaKategori
+              td= dd.deskripsiKategori
+              td
+                a.btn.btn-primary(href=env.app_url_back+'/kategori/'+dd.id+'/edit') edit
+                | &nbsp;
+                a.btn.btn-danger(href=env.app_url_back+'/kategori/'+dd.id+'/hapus') hapus

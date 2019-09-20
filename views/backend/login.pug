@@ -1,0 +1,31 @@
+doctype html
+html
+  head
+    title Login
+    link#bootstrap-css(href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css', rel='stylesheet')
+    link(rel='icon', href=env.app_url+'/img/logo_kq.png')
+    link#mystyle-css(href=env.app_url+'/admin/css/login.css', rel='stylesheet')
+    script(src='https://code.jquery.com/jquery-1.11.1.min.js')
+    script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js')
+  body
+    .container
+      .card.card-container
+        img#profile-img.profile-img-card(src='https://ssl.gstatic.com/accounts/ui/avatar_2x.png')
+        p#profile-name.profile-name-card
+        
+        if message
+          p.text-center= message
+
+        form.form-signin(method='post', action=env.app_url_back+'/login')
+          span#reauth-email.reauth-email
+          input#inputEmail.form-control(type='email', placeholder='Email address', required='', autofocus='', value='administrator@karomatulquran.com', name='email')
+          input#inputPassword.form-control(type='password', placeholder='Password', required='', value='082334093822', name='password')
+          #remember.checkbox
+            label
+              input(type='checkbox', value='remember-me')
+              |  Remember me
+          button.btn.btn-lg.btn-primary.btn-block.btn-signin(type='submit') Sign in
+        a.forgot-password(href='#')
+          | Forgot the password?
+
+    script(src=env.app_url+'/admin/js/login.js')

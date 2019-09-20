@@ -1,0 +1,45 @@
+doctype html
+html
+  head
+    title Dashboard
+    link#bootstrap-css(href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css', rel='stylesheet')
+    link(rel='icon', href=env.app_url+'/img/logo_kq.png')
+    link#mystyle-css(href=env.app_url+'/admin/css/style.css', rel='stylesheet')
+    script(src='https://code.jquery.com/jquery-1.11.1.min.js')
+    script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/tinymce/4.8.3/tinymce.min.js')
+
+  body
+    #wrapper
+      #sidebar-wrapper
+        ul.sidebar-nav
+          li.sidebar-brand
+            a(href=env.app_url_back) ADMINISTRATOR
+          li
+            a(href=env.app_url_back+'/dash') Dashboard
+          li
+            a(href=env.app_url_back+'/kategori') Kategori
+          li
+            a(href=env.app_url_back+'/postingan') Postingan
+          li
+            a(href=env.app_url_back+'/komentar') Komentar
+          li
+            a(href=env.app_url_back+'/pertanyaan') Pertanyaan
+          li
+            a(href=env.app_url_back+'/galeri') Galeri
+          li
+            a(href=env.app_url_back+'/pengguna') Pengguna
+          li
+            a(href=env.app_url_back+'/pengaturan') Pengaturan
+          li
+            a(href=env.app_url_back+'/logout') Logout
+
+      #page-content-wrapper
+        .container-fluid
+          block contentBackend
+
+    script.
+      $("#menu-toggle").click(function(e) {
+      e.preventDefault();
+      $("#wrapper").toggleClass("toggled");
+      });

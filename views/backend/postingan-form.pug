@@ -1,0 +1,116 @@
+extends layout
+
+block contentBackend
+  .row
+    h2= title
+      a.btn.btn-success.pull-right(href=env.app_url_back+'/postingan') back
+    hr
+    if formData.id == ''
+      - var tipeForm = 'multipart/form-data';
+    else
+      - var tipeForm = 'application/x-www-form-urlencoded'
+
+    form.form-vertical(method='post', enctype=tipeForm, action=env.app_url_back+'/postingan/proses')
+      .col-lg-8
+        .form-group
+          label Judul Postingan
+          input(type='hidden', name='id', value=formData.id)
+          input.form-control(type='text', name='judulPost', required, placeholder='Judul Post', value=formData.judulPost)
+        .form-group
+          textarea#kontenPost.form-control(name='kontenPost', rows='10', placeholder='Konten Postingan')= formData.kontenPost
+          input#upload(name='image', type='file', onchange='', style="display:none")
+      .col-lg-4
+        .form-group
+          label Kategori Postingan
+          select#kategoriId.form-control(name='kategoriId', required)
+        if !formData.coverKecil
+          .form-group
+            label Cover Kecil
+            input.form-control(type='file', name='coverKecil', required)
+            span Ukuran direkomendasikan 
+              b 360x313 px
+        if !formData.coverBesar
+          .form-group
+            label Cover Besar
+            input.form-control(type='file', name='coverBesar', required)
+            span Ukuran direkomendasikan 
+              b 750x375 px
+        .form-group
+          label Aktif Postingan
+          select.form-control(name='aktif', required)
+            option(value='') -- pilih --
+            option(value='true') true
+            option(value='false') false
+        .form-group
+          label Fitur Komentar
+          select.form-control(name='isKomentar', required)
+            option(value='') -- pilih --
+            option(value='true') true
+            option(value='false') false
+        .form-group
+          input.btn.btn-block.btn-success(type='submit', name='submit', value='Simpan Postingan')
+
+  script.
+    $(function() {
+      var idPost = '!{formData.kategoriId}';
+      $.get('/administrator/data/v1/kategoris', function(data) {
+        if(idPost) {
+          var getKategori;
+          data.forEach(function(item, index) { 
+            if(item.id == Number(idPost)) { 
+              getKategori = item;
+            } 
+          });
+          var renderHtml = "<option value='"+getKategori.id+"'>"+getKategori.namaKategori+"</option>";
+        } else {
+          var renderHtml = "<option value=''>-- pilih --</option>";
+        }
+        data.forEach(function (item, index) {
+          renderHtml += "<option value='"+item.id+"'>"+item.namaKategori+"</option>";
+        });
+        $('#kategoriId').html(renderHtml);
+      });
+    });
+
+    tinymce.init({
+      selector: "#kontenPost",
+      theme: "modern",
+      paste_data_images: true,
+      plugins: [
+        "advlist autolink lists link image charmap print preview hr anchor pagebreak",
+        "searchreplace wordcount visualblocks visualchars code fullscreen",
+        "insertdatetime media nonbreaking save table contextmenu directionality",
+        "emoticons template paste textcolor colorpicker textpattern autoresize"
+      ],
+      autoresize_bottom_margin: 10,
+      toolbar1: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | preview emoticons",
+      image_advtab: true,
+      convert_urls: false,
+      file_picker_callback: uploadToServer,
+      image_class_list: [
+        {title: 'None', value: ''},
+        {title: 'Responsive', value: 'img-responsive'},
+        {title: 'Thumbnail', value: 'img-responsive img-thumbnail'}
+      ]
+    });
+
+    function uploadToServer(callback, value, meta) {
+      if (meta.filetype == 'image') {
+        $('#upload').trigger('click');
+        $('#upload').on('change', function(e) {
+          var dataForm = new FormData();
+          dataForm.append('upload', this.files[0]);
+          $.ajax({
+            url: '!{env.app_url_back}/postingan/gambar',
+            type: 'POST',
+            data: dataForm,
+            processData: false,
+            contentType: false,
+            success: (data)=>{
+              callback(data.url);
+              this.value = '';
+            }
+          })
+        });
+      }
+    }

@@ -1,0 +1,70 @@
+extends layout
+
+block content
+  section.breadcrumb.breadcrumb_bg
+    .container
+      .row
+        .col-lg-12
+          .breadcrumb_iner.text-center
+            .breadcrumb_iner_item
+              h2= title
+              p
+                | Home
+                span /
+                | Tentang Kami
+
+  section.feature_part
+    .container
+      .row
+        .col-sm-6.col-xl-3.align-self-center
+          .single_feature_text
+            h2
+              | Keutamaan 
+              br
+              |  Al-Qur'an
+            p
+              | Allah Ta’ala telah memuliakan Ahlul Qur’an baik pembaca, penghafal ataupun pengamalnya dengan keistimewaan yang banyak sekali, di dunia dan akhirat.
+            a.btn_1(href='#') Read More
+        .col-sm-6.col-xl-3
+          .single_feature
+            .single_feature_part
+              span.single_feature_icon
+                i.ti-layers
+              h4 Membaca
+              p
+                | “Siapa saja membaca satu huruf dari Kitab Allah (Al-Qur’an), maka baginya satu kebaikan, dan satu kebaikan itu dibalas dengan sepuluh kali lipatnya,” (HR. At-Tirmidzi).
+        .col-sm-6.col-xl-3
+          .single_feature
+            .single_feature_part
+              span.single_feature_icon
+                i.ti-new-window
+              h4 Menghafal
+              p
+                | Sabda Nabi Muhammad shallallahu ‘alaihi wasallam, “Hendaklah orang yang lebih banyak hafalan Al-Qur’annya yang mengimami sholat kalian”. (HR. Bukhari).
+        .col-sm-6.col-xl-3
+          .single_feature
+            .single_feature_part.single_feature_part_2
+              span.single_service_icon.style_icon
+                i.ti-light-bulb
+              h4 Mengamalkan
+              p
+                | Sabda Nabi Muhammad shallallahu ‘alaihi wasallam, “Sebaik-baik kalian yaitu siapa yang mempelajari Al-Quran dan mengamalkannya,” (HR. Bukhari).
+  section.learning_part
+    .container
+      .row.align-items-sm-center.align-items-lg-stretch
+        .col-md-7.col-lg-7
+          .learning_img
+            img(src=env.app_url+'/img/learning_img2.png', alt='')
+        .col-md-5.col-lg-5
+          .learning_member_text
+            h5 Inilah Kami
+            h2 Belajar dengan Ikhtiar dan Istiqomah
+            p
+              | Tetap ikhtiar berarti terus berupaya dan berbuat. Tidak diam, juga tidak fatalistis. Keyakinannya cukup kuat dan stabil. Sebesar dan semaksimal ikhtiar sebesar itulah hasil. Tentu berikhtiar maksimal dalam jalan yang diridhai-Nya.
+            ul
+              li Ikhtiar
+              li Tawakal
+              li Ikhlas
+              li Sabar
+              li Syukur
+            a.btn_1(href='#') Read More

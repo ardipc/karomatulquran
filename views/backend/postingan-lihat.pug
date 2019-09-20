@@ -1,0 +1,18 @@
+extends layout
+
+block contentBackend
+  .row
+    h2= title
+      a.btn.btn-success.pull-right(href=env.app_url_back+'/postingan') back
+    hr
+    span 
+      | Kategori 
+      b #{row.kategori.namaKategori} 
+      | - Author 
+      b #{row.pengguna.nama}
+      | - Pembuatan 
+      b #{row.createdAt}
+    br
+    br
+
+    #konten !{row.kontenPost}
