@@ -1,6 +1,6 @@
 module.exports = {
-	'app_url': 'http://localhost:3000',
-	'app_url_back': 'http://localhost:3000/administrator',
+	'app_url': 'https://karomatulquran.herokuapp.com',
+	'app_url_back': 'https://karomatulquran.herokuapp.com/administrator',
 	'app_port': 3000,
 	'app_env': 'development',
 
