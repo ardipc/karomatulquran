@@ -7,14 +7,17 @@ block contentBackend
     hr
     if formData.id == ''
       - var tipeForm = 'multipart/form-data';
+      - var proses = 'proses';
     else
       - var tipeForm = 'application/x-www-form-urlencoded'
+      - var proses = 'prosesedit';
 
-    form.form-vertical(method='post', enctype=tipeForm, action=env.app_url_back+'/postingan/proses')
+    form.form-vertical(method='post', enctype=tipeForm, action=env.app_url_back+'/postingan/'+proses)
       .col-lg-8
         .form-group
           label Judul Postingan
-          input(type='hidden', name='id', value=formData.id)
+          if formData.id != ''
+            input(type='hidden', name='id', value=formData.id)
           input.form-control(type='text', name='judulPost', required, placeholder='Judul Post', value=formData.judulPost)
         .form-group
           textarea#kontenPost.form-control(name='kontenPost', rows='10', placeholder='Konten Postingan')= formData.kontenPost

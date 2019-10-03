@@ -1,0 +1,24 @@
+extends layout
+
+block contentBackend
+  .row
+    h2= title
+      a.btn.btn-success.pull-right(href=env.app_url_back+'/postingan') back
+    hr
+
+    form.form-vertical(method='post', enctype='multipart/form-data', action=env.app_url_back+'/postingan/cover')
+      input(type='hidden', name='id', value=formData.id)
+      .col-lg-12
+        .form-group
+          label Cover Kecil
+          input.form-control(type='file', name='coverKecil', required)
+          span Ukuran direkomendasikan 
+            b 360x313 px
+        .form-group
+          label Cover Besar
+          input.form-control(type='file', name='coverBesar', required)
+          span Ukuran direkomendasikan 
+            b 750x375 px
+        
+        .form-group
+          input.btn.btn-block.btn-success(type='submit', name='submit', value='Edit Cover')

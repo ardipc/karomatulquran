@@ -30,8 +30,12 @@ router.get('/postingan/form', postinganController.getForm);
 router.get('/postingan/:id/edit', postinganController.getForm);
 router.get('/postingan/:id/lihat', postinganController.getLihat);
 router.get('/postingan/:id/hapus', postinganController.getHapus);
+router.get('/postingan/:id/aktif', postinganController.getAktif);
+router.get('/postingan/:id/cover', postinganController.getCover);
 router.post('/postingan/proses', postinganController.postProses);
+router.post('/postingan/prosesedit', postinganController.postProsesEdit);
 router.post('/postingan/gambar', postinganController.postGambar);
+router.post('/postingan/cover', postinganController.postCover);
 
 // {GET} MASTER DATA
 router.get('/data/v1/:model', masterController.getData);

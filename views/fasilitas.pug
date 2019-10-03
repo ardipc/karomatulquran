@@ -1,0 +1,35 @@
+extends layout
+
+block content
+  section.breadcrumb.breadcrumb_bg
+    .container
+      .row
+        .col-lg-12
+          .breadcrumb_iner.text-center
+            .breadcrumb_iner_item
+              h2= title
+              p
+                | Home
+                span /
+                | #{title}
+
+  section.sample-text-area
+    .container.box_1170
+      h3.text-heading #{title}
+      p.sample-text
+        | Beberapa fasilitas yang ada pada pondo pesantren kami
+        
+  .whole-wrap
+    .container.box_1170
+      .section-top-border
+        .col-md-6
+          .switch-wrap.d-flex.justify-content-between
+            p 01. Sample Checkbox
+            .primary-checkbox
+              input#default-checkbox(type='checkbox')
+              label(for='default-checkbox')
+          .switch-wrap.d-flex.justify-content-between
+            p 02. Primary Color Checkbox
+            .primary-checkbox
+              input#primary-checkbox(type='checkbox', checked='')
+              label(for='primary-checkbox')

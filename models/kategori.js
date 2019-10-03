@@ -13,3 +13,6 @@ module.exports = (sequelize, DataTypes) => {
   };
   return kategori;
 };
+
+// 1 => N
+// 1 kategori => N postingan

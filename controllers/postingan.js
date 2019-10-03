@@ -4,6 +4,7 @@ var backlink = '/administrator';
 
 var models = require('../models/index');
 
+var fs = require('fs');
 var multer = require('multer');
 var storage = multer.diskStorage({
 	destination: (req, file, cb) => {
@@ -25,6 +26,61 @@ var upload = multer({
 		cb(null, true)
 	}
 });
+
+exports.postCover = (req, res, next) => {
+	var cUpload = upload.fields([
+		{ name: 'coverKecil', maxCount: 1 }, 
+		{ name: 'coverBesar', maxCount: 1 }
+	]);
+
+	cUpload(req, res, (err) => {
+		models.postingans.findOne({where: {id: req.body.id}}).then(row => {
+			fs.unlink('./public/img/blog/'+row.coverBesar, (err) => {
+				fs.unlink('./public/img/blog/'+row.coverKecil, (err) => {
+					if(err instanceof multer.MulterError) {
+						console.error('[ERROR INSTANCE]: ', err);
+					} else if(err) {
+						console.error('[ERROR]: ', err);
+					}
+
+					var formData = {
+						coverKecil: req.files['coverKecil'][0].filename,
+						coverBesar: req.files['coverBesar'][0].filename
+					};
+
+					models.postingans.update(formData, {where: {id: row.id}}).then(row => {
+						res.redirect(backlink+'/postingan');
+					});
+				});
+			});
+		});
+	})
+}
+
+exports.getCover = (req, res, next) => {
+	var id = req.params.id;
+	models.postingans.findOne({where: { id: id}}).then(row => {
+		res.render(workspace+'/postingan-cover', {
+			formData: row,
+			title: 'Edit Cover'
+		})
+	})
+}
+
+exports.getAktif = (req, res, next) => {
+	var id = req.params.id;
+	models.postingans.findOne({ where: { id: id}}).then(row => {
+		if(row.aktif) {
+			models.postingans.update({aktif: false}, {where: { id: row.id }}).then(result => {
+				res.redirect(backlink+'/postingan');
+			})
+		} else {
+			models.postingans.update({aktif: true}, {where: { id: row.id }}).then(result => {
+				res.redirect(backlink+'/postingan');
+			})
+		}
+	})
+}
 
 exports.getPostingan = (req, res, next) => {
 	models.postingans.findAll({ 
@@ -76,8 +132,14 @@ exports.getForm = (req, res, next) => {
 };
 
 exports.getHapus = (req, res, next) => {
-	models.postingans.destroy({ where: { id: req.params.id }}).then(row => {
-		res.redirect(backlink+'/postingan');
+	models.postingans.findOne({where: {id: req.params.id}}).then(row => {
+		fs.unlink('./public/img/blog/'+row.coverBesar, (err) => {
+			fs.unlink('./public/img/blog/'+row.coverKecil, (err) => {
+				models.postingans.destroy({where: {id: req.params.id}}).then(row => {
+					res.redirect(backlink+'/postingan');
+				});
+			});
+		});
 	});
 };
 
@@ -98,43 +160,43 @@ exports.getLihat = (req, res, next) => {
 	});
 }
 
+exports.postProsesEdit = (req, res, next) => {
+	var formData = {
+		judulPost: req.body.judulPost, kontenPost: req.body.kontenPost,
+		isKomentar: req.body.isKomentar, aktif: req.body.aktif,
+		kategoriId: req.body.kategoriId, penggunaId: '1',
+	};
+
+	models.postingans.update(formData, { where: { id: req.body.id } }).then(row => {
+		res.redirect(backlink + '/postingan');
+	});
+}
+
 exports.postProses = (req, res, next) => {
-	if(req.body.id == '') {
-		var cUpload = upload.fields([
-			{ name: 'coverKecil', maxCount: 1 }, 
-			{ name: 'coverBesar', maxCount: 1 }
-		]);
+	var cUpload = upload.fields([
+		{ name: 'coverKecil', maxCount: 1 }, 
+		{ name: 'coverBesar', maxCount: 1 }
+	]);
 
-		cUpload(req, res, (err) => {
-			if(err instanceof multer.MulterError) {
-				console.error('[ERROR INSTANCE]: ', err);
-			} else if(err) {
-				console.error('[ERROR]: ', err);
-			}
+	cUpload(req, res, (err) => {
+		if(err instanceof multer.MulterError) {
+			console.error('[ERROR INSTANCE]: ', err);
+		} else if(err) {
+			console.error('[ERROR]: ', err);
+		}
 
-			var formData = {
-				judulPost: req.body.judulPost, kontenPost: req.body.kontenPost,
-				isKomentar: req.body.isKomentar, aktif: req.body.aktif,
-				kategoriId: req.body.kategoriId, penggunaId: '1',
-				coverKecil: req.files['coverKecil'][0].filename,
-				coverBesar: req.files['coverBesar'][0].filename
-			};
-
-			models.postingans.create(formData).then(row => {
-				res.redirect(backlink+'/postingan');			
-			});
-		});
-	} else {
 		var formData = {
 			judulPost: req.body.judulPost, kontenPost: req.body.kontenPost,
 			isKomentar: req.body.isKomentar, aktif: req.body.aktif,
 			kategoriId: req.body.kategoriId, penggunaId: '1',
+			coverKecil: req.files['coverKecil'][0].filename,
+			coverBesar: req.files['coverBesar'][0].filename
 		};
 
-		models.postingans.update(formData, { where: {id: req.body.id}}).then(row => {
-			res.redirect(backlink+'/postingan');			
+		models.postingans.create(formData).then(row => {
+			res.redirect(backlink+'/postingan');
 		});
-	}
+	});
 };
 
 exports.postGambar = (req, res, next) => {

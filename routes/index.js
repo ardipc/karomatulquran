@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var models = require('../models/index');
 
 router.get('/', (req, res, next) => {
   res.render('home', { title: 'Karomatul Quran' });
@@ -23,6 +24,24 @@ router.get('/kontak', (req, res, next) => {
 
 router.get('/profil', (req, res, next) => {
 	res.render('profil', { title: 'Profil Kami'});
+});
+
+router.get('/santri', (req, res, next) => {
+	models.santris.findAll().then(rows => {
+		res.render('santri', { title: 'Santri Kami', rows: rows });
+	})
+});
+
+router.get('/prestasi', (req, res, next) => {
+	res.render('prestasi', { title: 'Prestasi Kami' });
+});
+
+router.get('/agenda', (req, res, next) => {
+	res.render('agenda', { title: 'Agenda Keseharian' });
+});
+
+router.get('/fasilitas', (req, res, next) => {
+	res.render('fasilitas', { title: 'Fasilitas Kami' });
 });
 
 module.exports = router;

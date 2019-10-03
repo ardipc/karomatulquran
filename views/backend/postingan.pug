@@ -3,7 +3,7 @@ extends layout
 block contentBackend
   .row
     h2= title
-      a.btn.btn-success.pull-right(href=env.app_url_back+'/postingan/form') tambah
+      a.btn.btn-default.pull-right(href=env.app_url_back+'/postingan/form') tambah
     hr
 
     .col-lg-12
@@ -13,10 +13,10 @@ block contentBackend
             th NO
             th KATEGORI
             th JUDUL
-            th PEMBUATAN
-            th AKTIF
-            th AUTHOR
-            th ACTION
+            th TANGGAL
+            th PUBLISH
+            th PENULIS
+            th AKSI
         tbody
           each dd, i in rows
             tr
@@ -29,10 +29,18 @@ block contentBackend
                   span.label.label-success #{dd.aktif}
                 else
                   span.label.label-danger #{dd.aktif}
+
               td= dd.pengguna.nama
               td
-                a.btn.btn-info(href=env.app_url_back+'/postingan/'+dd.id+'/lihat') lihat
+                if dd.aktif
+                  a.btn.btn-default(href=env.app_url_back+'/postingan/'+dd.id+'/aktif') unpublish
+                else
+                  a.btn.btn-default(href=env.app_url_back+'/postingan/'+dd.id+'/aktif') publish
                 | &nbsp;
-                a.btn.btn-primary(href=env.app_url_back+'/postingan/'+dd.id+'/edit') edit
+                a.btn.btn-default(href=env.app_url_back+'/postingan/'+dd.id+'/lihat') lihat
                 | &nbsp;
-                a.btn.btn-danger(href=env.app_url_back+'/postingan/'+dd.id+'/hapus') hapus
+                a.btn.btn-default(href=env.app_url_back+'/postingan/'+dd.id+'/cover') cover
+                | &nbsp;
+                a.btn.btn-default(href=env.app_url_back+'/postingan/'+dd.id+'/edit') edit
+                | &nbsp;
+                a.btn.btn-default(href=env.app_url_back+'/postingan/'+dd.id+'/hapus') hapus

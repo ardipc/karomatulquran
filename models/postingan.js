@@ -21,3 +21,6 @@ module.exports = (sequelize, DataTypes) => {
   };
   return postingan;
 };
+
+// 1 => 1
+// 1 postingan => 1 kategori

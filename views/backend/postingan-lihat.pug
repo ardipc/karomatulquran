@@ -14,5 +14,9 @@ block contentBackend
       b #{row.createdAt}
     br
     br
+    
+    img.img-thumbnail(src=env.app_url+'/img/blog/'+row.coverBesar)
+    br
+    br
 
     #konten !{row.kontenPost}
