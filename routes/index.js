@@ -15,7 +15,7 @@ router.get('/berita/:id/detail', (req, res, next) => {
 });
 
 router.get('/galeri', (req, res, next) => {
-	res.render('galeri', { title: 'Galeri Terbaru'});
+	res.render('galeri', { title: 'Galeri Kami'});
 });
 
 router.get('/kontak', (req, res, next) => {
@@ -29,11 +29,13 @@ router.get('/profil', (req, res, next) => {
 router.get('/santri', (req, res, next) => {
 	models.santris.findAll().then(rows => {
 		res.render('santri', { title: 'Santri Kami', rows: rows });
-	})
+	});
 });
 
 router.get('/prestasi', (req, res, next) => {
-	res.render('prestasi', { title: 'Prestasi Kami' });
+	models.prestasis.findAll().then(rows => {
+		res.render('prestasi', { title: 'Prestasi Kami', rows: rows });
+	})
 });
 
 router.get('/agenda', (req, res, next) => {

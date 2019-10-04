@@ -19,32 +19,35 @@ block content
         #map(style='height: 480px;')
         script.
           function initMap() {
-          var uluru = {lat: -25.363, lng: 131.044};
-          var grayStyles = [
-          {
-          featureType: "all",
-          stylers: [
-          { saturation: -90 },
-          { lightness: 50 }
-          ]
-          },
-          {elementType: 'labels.text.fill', stylers: [{color: '#ccdee9'}]}
-          ];
-          var map = new google.maps.Map(document.getElementById('map'), {
-          center: {lat: -31.197, lng: 150.744},
-          zoom: 9,
-          styles: grayStyles,
-          scrollwheel:  false
-          });
+            var uluru = {lat: -7.811240, lng: 112.701040};
+            var grayStyles = [
+              {
+                featureType: "all",
+                stylers: [
+                  { saturation: -90 },
+                  { lightness: 50 }
+                ]
+              },
+              {
+                elementType: 'labels.text.fill', stylers: [{color: '#ccdee9'}]
+              }
+            ];
+
+            var map = new google.maps.Map(document.getElementById('map'), {
+              center: {lat: -7.811240, lng: 112.701040},
+              zoom: 9,
+              styles: grayStyles,
+              scrollwheel:  false
+            });
           }
 
-        script(src='https://maps.googleapis.com/maps/api/js?key=AIzaSyDpfS1oRGreGSBU5HHjMmQ3o5NLw7VdJ6I&callback=initMap')
+        script(src='https://maps.googleapis.com/maps/api/js?key=AIzaSyDCl0M4XFLxQAVllJi2ZJNyBBwhe1DLoww&callback=initMap')
         
       .row
         .col-12
-          h2.contact-title Get in Touch
+          h2.contact-title Ada yang perlu ditanyakan
         .col-lg-8
-          form#contactForm.form-contact.contact_form(action='contact_process.php', method='post', novalidate='novalidate')
+          form#contactForm.form-contact.contact_form(action='#', method='post', novalidate='novalidate')
             .row
               .col-12
                 .form-group
@@ -60,22 +63,23 @@ block content
                   input#subject.form-control(name='subject', type='text', onfocus="this.placeholder = ''", onblur="this.placeholder = 'Enter Subject'", placeholder='Enter Subject')
             .form-group.mt-3
               button.button.button-contactForm.btn_1(type='submit') Send Message
+
         .col-lg-4
           .media.contact-info
             span.contact-info__icon
               i.ti-home
             .media-body
-              h3 Buttonwood, California.
-              p Rosemead, CA 91770
+              h3 Jl. Gunting Kidul, Sentul, Purwodadi.
+              p Pasuruan, Jawa Timur 67163
           .media.contact-info
             span.contact-info__icon
               i.ti-tablet
             .media-body
-              h3 00 (440) 9865 562
-              p Mon to Fri 9am to 6pm
+              h3 +62 8233 4093 822
+              p Setiap Hari Online
           .media.contact-info
             span.contact-info__icon
               i.ti-email
             .media-body
-              h3 support@colorlib.com
-              p Send us your query anytime!
+              h3 karomatulquran@gmail.com
+              p Kirim pesan kamu ke email kami.
