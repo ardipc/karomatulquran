@@ -6,6 +6,7 @@ var authController = require('../controllers/auth');
 var penggunaController = require('../controllers/pengguna');
 var kategoriController = require('../controllers/kategori');
 var postinganController = require('../controllers/postingan');
+var pengaturanController = require('../controllers/pengaturan');
 var masterController = require('../controllers/master');
 
 // {GET} AUTH
@@ -36,6 +37,10 @@ router.post('/postingan/proses', postinganController.postProses);
 router.post('/postingan/prosesedit', postinganController.postProsesEdit);
 router.post('/postingan/gambar', postinganController.postGambar);
 router.post('/postingan/cover', postinganController.postCover);
+
+// {GET} PENGATURAN
+router.get('/pengaturan', pengaturanController.getPengaturan);
+router.post('/pengaturan/simpan', pengaturanController.simpanPengaturan);
 
 // {GET} MASTER DATA
 router.get('/data/v1/:model', masterController.getData);

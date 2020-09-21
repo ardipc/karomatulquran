@@ -1,0 +1,43 @@
+extends layout
+
+block contentBackend
+  .row
+    h2= title
+    hr
+
+    .col-lg-12
+      form#pengaturan.form-horizontal(method='post', action=env.app_url_back+'/pengaturan/simpan')
+        each row in forms
+          .form-group
+            label.control-label.col-sm-2(for=row.name) #{row.name}
+            .col-sm-8
+              input.form-control(name=row.name, type='text', placeholder='Enter '+row.name, value=row.value)
+
+        #tambahan
+
+        .form-group
+          label.control-label.col-sm-2(for='button')
+
+          .col-sm-8
+            input.btn.btn-success(type='submit', name='submit', value='Simpan')
+            | &nbsp;
+            input#tambah.btn.btn-primary(type='button', name='tambah', value='Tambah')
+            | &nbsp;
+            a.btn.btn-primary(href=env.app_url_back+'/pengaturan') Reload
+
+  script.
+    $(function(){
+      $('#tambah').on('click', function() {
+        let html = `
+          <div class="form-group">
+            <div class="col-sm-2">
+              <input type="text" name="name" class="form-control" />
+            </div>
+            <div class="col-sm-8">
+              <input type="text" name="value" class="form-control" />
+            </div>
+          </div>
+        `;
+        $('#tambahan').append(html);
+      })
+    })
